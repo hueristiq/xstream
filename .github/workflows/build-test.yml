@@ -42,4 +42,4 @@ jobs:
             -
                 name: Go build
                 run: go build -v .
-                working-directory: ./cmd/xt
+                working-directory: ./cmd/xtee

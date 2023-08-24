@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	"github.com/hueristiq/hqgolog"
-	"github.com/hueristiq/xt/internal/configuration"
+	"github.com/hueristiq/xtee/internal/configuration"
 	"github.com/spf13/pflag"
 )
 

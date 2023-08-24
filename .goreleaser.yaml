@@ -4,9 +4,9 @@ before:
 
 builds:
     -
-        id: xt-cli
-        main: cmd/xt/main.go
-        binary: xt
+        id: xtee-cli
+        main: cmd/xtee/main.go
+        binary: xtee
 
         env:
             - CGO_ENABLED=0
@@ -38,7 +38,7 @@ archives:
     -
         id: tgz
         builds: 
-            - xt-cli
+            - xtee-cli
         format: tar.gz
         format_overrides:
             -

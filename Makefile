@@ -40,7 +40,7 @@ test:
 
 .PHONY: build
 build:
-	$(GOBUILD) $(GOFLAGS) -ldflags '$(LDFLAGS)' -o bin/xt cmd/xt/main.go
+	$(GOBUILD) $(GOFLAGS) -ldflags '$(LDFLAGS)' -o bin/xtee cmd/xtee/main.go
 
 .PHONY: install
 install:

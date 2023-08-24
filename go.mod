@@ -1,4 +1,4 @@
-module github.com/hueristiq/xt
+module github.com/hueristiq/xtee
 
 go 1.20
 
