@@ -1,0 +1,36 @@
+name: 🎉 release
+
+on:
+    create:
+        branches:
+            - main
+        tags:
+            - v*.*.*
+
+jobs:
+    release:
+        name: Release
+        runs-on: ubuntu-latest
+        steps:
+            -
+                name: Set up Go
+                uses: actions/setup-go@v4
+                with:
+                    go-version:  '>=1.20'
+            -
+                name: Checkout code
+                uses: actions/checkout@v3
+                with:
+                    fetch-depth: 0
+            -
+                name: Run GoReleaser
+                uses: goreleaser/goreleaser-action@v4
+                with:
+                    distribution: goreleaser
+                    version: latest
+                    args: "release --clean"
+                    workdir: .
+                env:
+                    GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+                    DISCORD_WEBHOOK_ID: "${{ secrets.DISCORD_WEBHOOK_ID }}"
+                    DISCORD_WEBHOOK_TOKEN: "${{ secrets.DISCORD_WEBHOOK_TOKEN }}"
