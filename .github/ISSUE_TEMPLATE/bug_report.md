@@ -7,9 +7,9 @@ labels: 'Type: Bug'
 
 <!-- ISSUES MISSING IMPORTANT INFORMATION MAY BE CLOSED WITHOUT INVESTIGATION. -->
 
-### `xtee` version:
-<!-- We only accept issues that are reproducible on the latest version of `xtee`. -->
-<!-- You can find the latest version of project at https://github.com/hueristiq/xtee/releases/ -->
+### `xstreamin` version:
+<!-- We only accept issues that are reproducible on the latest version of `xstreamin`. -->
+<!-- You can find the latest version of project at https://github.com/hueristiq/xstreamin/releases/ -->
 
 ### Current Behavior:
 <!-- A concise description of what you're experiencing. -->
@@ -20,9 +20,9 @@ labels: 'Type: Bug'
 ### Steps To Reproduce:
 <!--
 Example: steps to reproduce the behavior:
-1. Run 'xtee ..'
+1. Run 'xstreamin ..'
 2. See error...
 -->
 
 ### Anything else:
-<!-- Links? References? Screnshots? Anything that will give us more contextee about the issue that you are encountering! -->
+<!-- Links? References? Screnshots? Anything that will give us more contexstreamin about the issue that you are encountering! -->

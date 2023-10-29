@@ -17,6 +17,8 @@ ifneq ($(shell go env GOOS),darwin)
 LDFLAGS := -extldflags "-static"
 endif
 
+all: build
+
 .PHONY: tidy
 tidy:
 	$(GOMOD) tidy
@@ -40,7 +42,7 @@ test:
 
 .PHONY: build
 build:
-	$(GOBUILD) $(GOFLAGS) -ldflags '$(LDFLAGS)' -o bin/xtee cmd/xtee/main.go
+	$(GOBUILD) $(GOFLAGS) -ldflags '$(LDFLAGS)' -o bin/xstreamin cmd/xstreamin/main.go
 
 .PHONY: install
 install:
