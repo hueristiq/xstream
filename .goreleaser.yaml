@@ -4,9 +4,9 @@ before:
 
 builds:
     -
-        id: xstreamin-cli
-        main: cmd/xstreamin/main.go
-        binary: xstreamin
+        id: xbridge-cli
+        main: cmd/xbridge/main.go
+        binary: xbridge
 
         env:
             - CGO_ENABLED=0
@@ -38,7 +38,7 @@ archives:
     -
         id: tgz
         builds: 
-            - xstreamin-cli
+            - xbridge-cli
         format: tar.gz
         format_overrides:
             -

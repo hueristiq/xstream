@@ -42,4 +42,4 @@ jobs:
             -
                 name: Go build
                 run: go build -v .
-                working-directory: ./cmd/xstreamin
+                working-directory: ./cmd/xbridge

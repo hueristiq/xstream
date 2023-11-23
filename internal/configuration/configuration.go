@@ -3,20 +3,21 @@ package configuration
 import "github.com/logrusorgru/aurora/v3"
 
 const (
-	NAME    string = "xstreamin"
+	NAME    string = "xbridge"
 	VERSION string = "0.0.0"
 )
 
 var BANNER = aurora.Sprintf(
 	aurora.BrightBlue(`
-          _                            _
-__  _____| |_ _ __ ___  __ _ _ __ ___ (_)_ __
-\ \/ / __| __| '__/ _ \/ _`+"`"+` | '_ `+"`"+` _ \| | '_ \
- >  <\__ \ |_| | |  __/ (_| | | | | | | | | | |
-/_/\_\___/\__|_|  \___|\__,_|_| |_| |_|_|_| |_|
-                                         %s
+      _          _     _
+__  _| |__  _ __(_) __| | __ _  ___
+\ \/ / '_ \| '__| |/ _`+"`"+` |/ _`+"`"+` |/ _ \
+ >  <| |_) | |  | | (_| | (_| |  __/
+/_/\_\_.__/|_|  |_|\__,_|\__, |\___|
+                         |___/ 
+                              %s
 
-               %s`).Bold(),
+    %s`).Bold(),
 	aurora.BrightRed("v"+VERSION).Bold(),
 	aurora.BrightYellow("with <3 by Hueristiq Open Source").Italic(),
 )

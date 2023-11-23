@@ -45,7 +45,7 @@ test:
 
 .PHONY: build
 build:
-	$(GOBUILD) $(GOFLAGS) -ldflags '$(LDFLAGS)' -o bin/xstreamin cmd/xstreamin/main.go
+	$(GOBUILD) $(GOFLAGS) -ldflags '$(LDFLAGS)' -o bin/xbridge cmd/xbridge/main.go
 
 .PHONY: install
 install:
