@@ -1,6 +1,6 @@
 # xstreamin
 
-[![release](https://img.shields.io/github/release/hueristiq/xstreamin?style=flat&color=0040ff)](https://github.com/hueristiq/xstreamin/releases) [![license](https://img.shields.io/badge/license-MIT-gray.svg?colorB=0040FF)](https://github.com/hueristiq/xstreamin/blob/master/LICENSE) ![maintenance](https://img.shields.io/badge/maintained%3F-yes-0040ff.svg) [![open issues](https://img.shields.io/github/issues-raw/hueristiq/xstreamin.svg?style=flat&color=0040ff)](https://github.com/hueristiq/xstreamin/issues?q=is:issue+is:open) [![closed issues](https://img.shields.io/github/issues-closed-raw/hueristiq/xstreamin.svg?style=flat&color=0040ff)](https://github.com/hueristiq/xstreamin/issues?q=is:issue+is:closed) [![contribution](https://img.shields.io/badge/contributions-welcome-0040ff.svg)](https://github.com/hueristiq/xstreamin/blob/master/CONTRIBUTING.md)
+![made with go](https://img.shields.io/badge/made%20with-Go-1E90FF.svg) [![go report card](https://goreportcard.com/badge/github.com/hueristiq/xstreamin)](https://goreportcard.com/report/github.com/hueristiq/xstreamin) [![release](https://img.shields.io/github/release/hueristiq/xstreamin?style=flat&color=1E90FF)](https://github.com/hueristiq/xstreamin/releases) [![open issues](https://img.shields.io/github/issues-raw/hueristiq/xstreamin.svg?style=flat&color=1E90FF)](https://github.com/hueristiq/xstreamin/issues?q=is:issue+is:open) [![closed issues](https://img.shields.io/github/issues-closed-raw/hueristiq/xstreamin.svg?style=flat&color=1E90FF)](https://github.com/hueristiq/xstreamin/issues?q=is:issue+is:closed) [![license](https://img.shields.io/badge/license-MIT-gray.svg?color=1E90FF)](https://github.com/hueristiq/xstreamin/blob/master/LICENSE) ![maintenance](https://img.shields.io/badge/maintained%3F-yes-1E90FF.svg) [![contribution](https://img.shields.io/badge/contributions-welcome-1E90FF.svg)](https://github.com/hueristiq/xstreamin/blob/master/CONTRIBUTING.md)
 
 `xstreamin` is a CLI utility to process and append unique lines of input to a specified file.
 
@@ -15,6 +15,9 @@
 * [Usage](#usage)
 * [Contributing](#contributing)
 * [Licensing](#licensing)
+* [Credits](#credits)
+    * [Contributors](#contributors)
+    * [Similar Projects](#similar-projects)
 
 ## Features
 
@@ -139,3 +142,17 @@ pflag: help requested
 ## Licensing
 
 This tool is distributed under the [MIT license](https://github.com/hueristiq/xstreamin/blob/master/LICENSE).
+
+## Credits
+
+### Contributors
+
+Thanks to the amazing [contributors](https://github.com/hueristiq/xstreamin/graphs/contributors) for keeping this project alive.
+
+[![contributors](https://contrib.rocks/image?repo=hueristiq/xstreamin&max=500)](https://github.com/hueristiq/xstreamin/graphs/contributors)
+
+### Similar Projects
+
+Thanks to similar open source projects - check them out, may fit in your workflow.
+
+[anew](https://github.com/tomnomnom/anew) ◇ tee (coreutils) ◇ sponge (moreutils)
