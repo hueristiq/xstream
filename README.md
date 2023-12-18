@@ -54,13 +54,15 @@ Visit the [releases page](https://github.com/hueristiq/xbridge/releases) and fin
 tar xf xbridge-<version>-linux-amd64.tar.gz
 ```
 
-> **TIP:** The above steps, download and extract, can be combined into a single step with this onliner
+> [!TIP]
+> The above steps, download and extract, can be combined into a single step with this onliner
 > 
 > ```bash
 > curl -sL https://github.com/hueristiq/xbridge/releases/download/v<version>/xbridge-<version>-linux-amd64.tar.gz | tar -xzv
 > ```
 
-**NOTE:** On Windows systems, you should be able to double-click the zip archive to extract the `xbridge` executable.
+> [!NOTE]
+> On Windows systems, you should be able to double-click the zip archive to extract the `xbridge` executable.
 
 ...move the `xbridge` binary to somewhere in your `PATH`. For example, on GNU/Linux and OS X systems:
 
@@ -68,7 +70,8 @@ tar xf xbridge-<version>-linux-amd64.tar.gz
 sudo mv xbridge /usr/local/bin/
 ```
 
-**NOTE:** Windows users can follow [How to: Add Tool Locations to the PATH Environment Variable](https://msdn.microsoft.com/en-us/library/office/ee537574(v=office.14).aspx) in order to add `xbridge` to their `PATH`.
+> [!NOTE]
+> Windows users can follow [How to: Add Tool Locations to the PATH Environment Variable](https://msdn.microsoft.com/en-us/library/office/ee537574(v=office.14).aspx) in order to add `xbridge` to their `PATH`.
 
 ### Install source (With Go Installed)
 
@@ -100,11 +103,12 @@ go install -v github.com/hueristiq/xbridge/cmd/xbridge@latest
 	```bash
 	sudo mv xbridge /usr/local/bin/
 	```
+	> [!NOTE]
+	> Windows users can follow [How to: Add Tool Locations to the PATH Environment Variable](https://msdn.microsoft.com/en-us/library/office/ee537574(v=office.14).aspx) in order to add `xbridge` to their `PATH`.
 
-	**NOTE:** Windows users can follow [How to: Add Tool Locations to the PATH Environment Variable](https://msdn.microsoft.com/en-us/library/office/ee537574(v=office.14).aspx) in order to add `xbridge` to their `PATH`.
 
-
-**NOTE:** While the development version is a good way to take a peek at `xbridge`'s latest features before they get released, be aware that it may have bugs. Officially released versions will generally be more stable.
+> [!CAUTION]
+> While the development version is a good way to take a peek at `xbridge`'s latest features before they get released, be aware that it may have bugs. Officially released versions will generally be more stable.
 
 ## Usage
 
