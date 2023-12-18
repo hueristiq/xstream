@@ -4,7 +4,7 @@ import "github.com/logrusorgru/aurora/v3"
 
 const (
 	NAME    string = "xbridge"
-	VERSION string = "0.0.0"
+	VERSION string = "0.1.0"
 )
 
 var BANNER = aurora.Sprintf(
