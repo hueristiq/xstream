@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path/filepath"
 	"strings"
 
 	"github.com/hueristiq/hqgolog"
@@ -13,15 +14,21 @@ import (
 )
 
 var (
-	trim    bool
-	preview bool
-	silent  bool
+	soak                bool
+	trim                bool
+	unique              bool
+	appendToDestination bool
+	quiet               bool
+	preview             bool
 )
 
 func init() {
-	pflag.BoolVarP(&preview, "preview", "p", false, "")
-	pflag.BoolVarP(&silent, "silent", "s", false, "")
+	pflag.BoolVar(&soak, "soak", false, "")
 	pflag.BoolVar(&trim, "trim", false, "")
+	pflag.BoolVarP(&unique, "unique", "u", false, "")
+	pflag.BoolVarP(&appendToDestination, "append", "a", false, "")
+	pflag.BoolVarP(&quiet, "quiet", "q", false, "")
+	pflag.BoolVarP(&preview, "preview", "p", false, "")
 
 	pflag.CommandLine.SortFlags = false
 	pflag.Usage = func() {
@@ -30,12 +37,17 @@ func init() {
 		h := "\nUSAGE:\n"
 		h += fmt.Sprintf(" %s [OPTIONS]\n", configuration.NAME)
 
+		h += "\nINPUT:\n"
+		h += "     --soak bool        soak up all input before writing to file\n"
+
 		h += "\nMANIPULATION:\n"
 		h += "     --trim bool        enable leading and trailing whitespace trimming\n"
 
 		h += "\nOUTPUT:\n"
-		h += " -p, --preview bool     enable preview mode i.e show new lines, without writing the changes\n"
-		h += " -s, --silent bool      enable silent mode i.e suppress stdout output\n"
+		h += " -u, --unique bool      output unique lines\n"
+		h += " -a, --append bool      append lines to output\n"
+		h += " -q, --quiet bool       suppress output to stdout\n"
+		h += " -p, --preview bool     preview new lines, without writing to file\n"
 
 		fmt.Fprintln(os.Stderr, h)
 	}
@@ -44,75 +56,175 @@ func init() {
 }
 
 func main() {
-	destinationFile := pflag.Arg(0)
+	destination := pflag.Arg(0)
 
-	lines := make(map[string]bool)
+	var err error
 
-	var f io.WriteCloser
+	var writer io.WriteCloser
 
-	if destinationFile != "" {
-		lines = readFileIntoMap(destinationFile, trim)
+	uniqueDestinationLinesMap := map[string]bool{}
 
-		if !preview {
-			var err error
-
-			f, err = getWriteCloser(destinationFile)
-			if err != nil {
-				hqgolog.Fatal().Msg(err.Error())
-			}
-
-			defer f.Close()
+	if destination != "" && unique && appendToDestination {
+		uniqueDestinationLinesMap, err = readFileIntoMap(destination, trim)
+		if err != nil && !os.IsNotExist(err) {
+			hqgolog.Fatal().Msg(err.Error())
 		}
 	}
 
-	sc := bufio.NewScanner(os.Stdin)
-
-	for sc.Scan() {
-		line := sc.Text()
-
-		if trim {
-			line = strings.TrimSpace(line)
+	if destination != "" && !preview {
+		writer, err = getWriteCloser(destination, appendToDestination)
+		if err != nil {
+			hqgolog.Fatal().Msg(err.Error())
 		}
 
-		if lines[line] {
-			continue
+		defer writer.Close()
+	}
+
+	if soak {
+		if err = processInputInSoakMode(uniqueDestinationLinesMap, destination, writer); err != nil {
+			hqgolog.Fatal().Msg(err.Error())
 		}
-
-		lines[line] = true
-
-		if !silent {
-			fmt.Println(line)
-		}
-
-		if !preview && destinationFile != "" {
-			fmt.Fprintf(f, "%s\n", line)
+	} else {
+		if err = processInputInDefaultMode(uniqueDestinationLinesMap, destination, writer); err != nil {
+			hqgolog.Fatal().Msg(err.Error())
 		}
 	}
 }
 
-func readFileIntoMap(file string, trim bool) (lines map[string]bool) {
-	lines = make(map[string]bool)
+func processInputInSoakMode(uniqueDestinationLinesMap map[string]bool, destination string, df io.WriteCloser) (err error) {
+	var inputLinesSlice []string
 
-	r, err := os.Open(file)
+	inputLinesSlice, err = readStdinIntoSlice(trim)
 	if err != nil {
 		return
 	}
 
-	defer r.Close()
+	for _, line := range inputLinesSlice {
+		if unique {
+			if uniqueDestinationLinesMap[line] {
+				continue
+			}
 
-	sc := bufio.NewScanner(r)
-	for sc.Scan() {
-		line := sc.Text()
-		if trim {
-			line = strings.TrimSpace(line)
+			uniqueDestinationLinesMap[line] = true
 		}
 
-		lines[line] = true
+		if !quiet {
+			fmt.Println(line)
+		}
+
+		if !preview && destination != "" {
+			fmt.Fprintf(df, "%s\n", line)
+		}
 	}
 
 	return
 }
 
-func getWriteCloser(fn string) (writer io.WriteCloser, err error) {
-	return os.OpenFile(fn, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0o644)
+func processInputInDefaultMode(uniqueDestinationLinesMap map[string]bool, destination string, df io.WriteCloser) (err error) {
+	scanner := bufio.NewScanner(os.Stdin)
+
+	for scanner.Scan() {
+		line := scanner.Text()
+
+		if trim {
+			line = strings.TrimSpace(line)
+		}
+
+		if unique {
+			if uniqueDestinationLinesMap[line] {
+				continue
+			}
+
+			uniqueDestinationLinesMap[line] = true
+		}
+
+		if !quiet {
+			fmt.Println(line)
+		}
+
+		if !preview && destination != "" {
+			fmt.Fprintf(df, "%s\n", line)
+		}
+	}
+
+	if err = scanner.Err(); err != nil {
+		return
+	}
+
+	return
+}
+
+func readFileIntoMap(file string, trim bool) (lines map[string]bool, err error) {
+	lines = map[string]bool{}
+
+	var f *os.File
+
+	f, err = os.Open(file)
+	if err != nil {
+		return
+	}
+
+	defer f.Close()
+
+	scanner := bufio.NewScanner(f)
+
+	for scanner.Scan() {
+		line := scanner.Text()
+
+		if trim {
+			line = strings.TrimSpace(line)
+		}
+
+		if _, ok := lines[line]; ok {
+			continue
+		}
+
+		lines[line] = true
+	}
+
+	if err = scanner.Err(); err != nil {
+		return
+	}
+
+	return
+}
+
+func getWriteCloser(file string, appendToFile bool) (writer io.WriteCloser, err error) {
+	directory := filepath.Dir(file)
+
+	if _, err = os.Stat(directory); os.IsNotExist(err) {
+		if err = os.MkdirAll(directory, os.ModePerm); err != nil {
+			return
+		}
+	}
+
+	if appendToFile {
+		writer, err = os.OpenFile(file, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0o644)
+	} else {
+		writer, err = os.OpenFile(file, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0o644)
+	}
+
+	return
+}
+
+func readStdinIntoSlice(trim bool) (lines []string, err error) {
+	lines = []string{}
+
+	scanner := bufio.NewScanner(os.Stdin)
+
+	for scanner.Scan() {
+		line := scanner.Text()
+
+		if trim {
+			line = strings.TrimSpace(line)
+		}
+
+		lines = append(lines, line)
+	}
+
+	if err = scanner.Err(); err != nil {
+		return
+	}
+
+	return
 }
