@@ -43,7 +43,7 @@ go-test:
 
 .PHONY: go-build
 go-build:
-	$(GOBUILD) $(GOFLAGS) -ldflags '$(LDFLAGS)' -o bin/xbridge cmd/xbridge/main.go
+	$(GOBUILD) $(GOFLAGS) -ldflags '$(LDFLAGS)' -o bin/xstream cmd/xstream/main.go
 
 .PHONY: go-install
 go-install:

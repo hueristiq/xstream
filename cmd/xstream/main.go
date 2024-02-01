@@ -9,14 +9,14 @@ import (
 	"strings"
 
 	"github.com/hueristiq/hqgolog"
-	"github.com/hueristiq/xbridge/internal/configuration"
+	"github.com/hueristiq/xstream/internal/configuration"
 	"github.com/spf13/pflag"
 )
 
 var (
 	soak                bool
 	trim                bool
-	unique              bool
+	uniqueDestination   bool
 	appendToDestination bool
 	quiet               bool
 	preview             bool
@@ -25,7 +25,7 @@ var (
 func init() {
 	pflag.BoolVar(&soak, "soak", false, "")
 	pflag.BoolVar(&trim, "trim", false, "")
-	pflag.BoolVarP(&unique, "unique", "u", false, "")
+	pflag.BoolVarP(&uniqueDestination, "unique", "u", false, "")
 	pflag.BoolVarP(&appendToDestination, "append", "a", false, "")
 	pflag.BoolVarP(&quiet, "quiet", "q", false, "")
 	pflag.BoolVarP(&preview, "preview", "p", false, "")
@@ -64,7 +64,7 @@ func main() {
 
 	uniqueDestinationLinesMap := map[string]bool{}
 
-	if destination != "" && unique && appendToDestination {
+	if destination != "" && uniqueDestination && appendToDestination {
 		uniqueDestinationLinesMap, err = readFileIntoMap(destination, trim)
 		if err != nil && !os.IsNotExist(err) {
 			hqgolog.Fatal().Msg(err.Error())
@@ -100,7 +100,7 @@ func processInputInSoakMode(uniqueDestinationLinesMap map[string]bool, destinati
 	}
 
 	for _, line := range inputLinesSlice {
-		if unique {
+		if uniqueDestination {
 			if uniqueDestinationLinesMap[line] {
 				continue
 			}
@@ -130,7 +130,7 @@ func processInputInDefaultMode(uniqueDestinationLinesMap map[string]bool, destin
 			line = strings.TrimSpace(line)
 		}
 
-		if unique {
+		if uniqueDestination {
 			if uniqueDestinationLinesMap[line] {
 				continue
 			}

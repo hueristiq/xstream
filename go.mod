@@ -1,4 +1,4 @@
-module github.com/hueristiq/xbridge
+module github.com/hueristiq/xstream
 
 go 1.21.0
 
