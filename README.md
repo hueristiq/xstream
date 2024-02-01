@@ -103,6 +103,7 @@ go install -v github.com/hueristiq/xstream/cmd/xstream@latest
 	```bash
 	sudo mv xstream /usr/local/bin/
 	```
+
 	> [!NOTE]
 	> Windows users can follow [How to: Add Tool Locations to the PATH Environment Variable](https://msdn.microsoft.com/en-us/library/office/ee537574(v=office.14).aspx) in order to add `xstream` to their `PATH`.
 
