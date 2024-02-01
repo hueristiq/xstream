@@ -1,6 +1,6 @@
 module github.com/hueristiq/xbridge
 
-go 1.21
+go 1.21.0
 
 require (
 	github.com/hueristiq/hqgolog v0.0.0-20230623113334-a6018965a34f
@@ -9,6 +9,6 @@ require (
 )
 
 require (
-	golang.org/x/sys v0.15.0 // indirect
-	golang.org/x/term v0.15.0 // indirect
+	golang.org/x/sys v0.16.0 // indirect
+	golang.org/x/term v0.16.0 // indirect
 )
