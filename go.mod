@@ -1,6 +1,6 @@
 module github.com/hueristiq/xstream
 
-go 1.21.0
+go 1.21
 
 require (
 	github.com/hueristiq/hqgolog v0.0.0-20230623113334-a6018965a34f
