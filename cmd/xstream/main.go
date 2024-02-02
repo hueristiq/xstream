@@ -14,19 +14,19 @@ import (
 )
 
 var (
-	soak                bool
-	trim                bool
-	uniqueDestination   bool
-	appendToDestination bool
-	quiet               bool
-	preview             bool
+	soak           bool
+	trim           bool
+	uniqueOutput   bool
+	appendToOutput bool
+	quiet          bool
+	preview        bool
 )
 
 func init() {
 	pflag.BoolVar(&soak, "soak", false, "")
 	pflag.BoolVar(&trim, "trim", false, "")
-	pflag.BoolVarP(&uniqueDestination, "unique", "u", false, "")
-	pflag.BoolVarP(&appendToDestination, "append", "a", false, "")
+	pflag.BoolVarP(&uniqueOutput, "unique", "u", false, "")
+	pflag.BoolVarP(&appendToOutput, "append", "a", false, "")
 	pflag.BoolVarP(&quiet, "quiet", "q", false, "")
 	pflag.BoolVarP(&preview, "preview", "p", false, "")
 
@@ -41,7 +41,7 @@ func init() {
 		h += "     --soak bool        soak up all input before writing to file\n"
 
 		h += "\nMANIPULATION:\n"
-		h += "     --trim bool        enable leading and trailing whitespace trimming\n"
+		h += "     --trim bool        trim leading and trailing whitespace\n"
 
 		h += "\nOUTPUT:\n"
 		h += " -u, --unique bool      output unique lines\n"
@@ -64,7 +64,7 @@ func main() {
 
 	uniqueDestinationLinesMap := map[string]bool{}
 
-	if destination != "" && uniqueDestination && appendToDestination {
+	if destination != "" && uniqueOutput && appendToOutput {
 		uniqueDestinationLinesMap, err = readFileIntoMap(destination, trim)
 		if err != nil && !os.IsNotExist(err) {
 			hqgolog.Fatal().Msg(err.Error())
@@ -72,7 +72,7 @@ func main() {
 	}
 
 	if destination != "" && !preview {
-		writer, err = getWriteCloser(destination, appendToDestination)
+		writer, err = getWriteCloser(destination, appendToOutput)
 		if err != nil {
 			hqgolog.Fatal().Msg(err.Error())
 		}
@@ -100,7 +100,7 @@ func processInputInSoakMode(uniqueDestinationLinesMap map[string]bool, destinati
 	}
 
 	for _, line := range inputLinesSlice {
-		if uniqueDestination {
+		if uniqueOutput {
 			if uniqueDestinationLinesMap[line] {
 				continue
 			}
@@ -130,7 +130,7 @@ func processInputInDefaultMode(uniqueDestinationLinesMap map[string]bool, destin
 			line = strings.TrimSpace(line)
 		}
 
-		if uniqueDestination {
+		if uniqueOutput {
 			if uniqueDestinationLinesMap[line] {
 				continue
 			}
