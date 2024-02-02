@@ -2,7 +2,7 @@
 
 ![made with go](https://img.shields.io/badge/made%20with-Go-1E90FF.svg) [![go report card](https://goreportcard.com/badge/github.com/hueristiq/xstream)](https://goreportcard.com/report/github.com/hueristiq/xstream) [![release](https://img.shields.io/github/release/hueristiq/xstream?style=flat&color=1E90FF)](https://github.com/hueristiq/xstream/releases) [![open issues](https://img.shields.io/github/issues-raw/hueristiq/xstream.svg?style=flat&color=1E90FF)](https://github.com/hueristiq/xstream/issues?q=is:issue+is:open) [![closed issues](https://img.shields.io/github/issues-closed-raw/hueristiq/xstream.svg?style=flat&color=1E90FF)](https://github.com/hueristiq/xstream/issues?q=is:issue+is:closed) [![license](https://img.shields.io/badge/license-MIT-gray.svg?color=1E90FF)](https://github.com/hueristiq/xstream/blob/master/LICENSE) ![maintenance](https://img.shields.io/badge/maintained%3F-yes-1E90FF.svg) [![contribution](https://img.shields.io/badge/contributions-welcome-1E90FF.svg)](https://github.com/hueristiq/xstream/blob/master/CONTRIBUTING.md)
 
-`xstream` is a command-line interface (CLI) utility for handling data streams in Unix-like environments. It serves as a pivotal link between standard input and dual outputs - standard output and a file.
+`xstream` is a versatile command-line interface (CLI) utility for handling data streams in Unix-like environments. It serves as a crucial link between standard input and dual outputs, taking a single stream of input and splitting it into two outputs, one to the standard output and the other to a file simultaneously. 
 
 ## Resources
 
@@ -26,7 +26,7 @@
 
 * Writes incoming `stdin` to both `stdout` and file.
 * Supports reading and writing to the same file.
-* Supports appending desination.
+* Supports appending and overwriting destination.
 * Supports deduplication.
 * Cross-Platform (Windows, Linux & macOS).
 
@@ -126,7 +126,7 @@ __  _____| |_ _ __ ___  __ _ _ __ ___
 \ \/ / __| __| '__/ _ \/ _` | '_ ` _ \
  >  <\__ \ |_| | |  __/ (_| | | | | | |
 /_/\_\___/\__|_|  \___|\__,_|_| |_| |_|
-                                 v0.2.0
+                                 v0.3.0
 
        with <3 by Hueristiq Open Source
 

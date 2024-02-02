@@ -4,7 +4,7 @@ import "github.com/logrusorgru/aurora/v3"
 
 const (
 	NAME    string = "xstream"
-	VERSION string = "0.2.0"
+	VERSION string = "0.3.0"
 )
 
 var BANNER = aurora.Sprintf(
