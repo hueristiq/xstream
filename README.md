@@ -120,15 +120,15 @@ xstream -h
 
 help message:
 
-```
-          _
-__  _____| |_ _ __ ___  __ _ _ __ ___
-\ \/ / __| __| '__/ _ \/ _` | '_ ` _ \
- >  <\__ \ |_| | |  __/ (_| | | | | | |
-/_/\_\___/\__|_|  \___|\__,_|_| |_| |_|
-                                 v0.3.0
+```text
 
-       with <3 by Hueristiq Open Source
+                      _
+            __  _____| |_ _ __ ___  __ _ _ __ ___
+            \ \/ / __| __| '__/ _ \/ _` | '_ ` _ \
+             >  <\__ \ |_| | |  __/ (_| | | | | | |
+            /_/\_\___/\__|_|  \___|\__,_|_| |_| |_| v0.3.0
+
+                ...with <3 by Hueristiq (https://github.com/hueristiq)
 
 USAGE:
  xstream [OPTIONS]
@@ -137,7 +137,7 @@ INPUT:
      --soak bool        soak up all input before writing to file
 
 MANIPULATION:
-     --trim bool        enable leading and trailing whitespace trimming
+     --trim bool        trim leading and trailing whitespace
 
 OUTPUT:
  -u, --unique bool      output unique lines
