@@ -19,8 +19,6 @@
 * [Contributing](#contributing)
 * [Licensing](#licensing)
 * [Credits](#credits)
-    * [Contributors](#contributors)
-    * [Similar Projects](#similar-projects)
 
 ## Features
 
@@ -32,7 +30,7 @@
 
 ## Installation
 
-### Install release binaries (Without Go Installed)
+### Install release binaries (without Go installed)
 
 Visit the [releases page](https://github.com/hueristiq/xstream/releases) and find the appropriate archive for your operating system and architecture. Download the archive from your browser or copy its URL and retrieve it with `wget` or `curl`:
 
@@ -73,7 +71,7 @@ sudo mv xstream /usr/local/bin/
 > [!NOTE]
 > Windows users can follow [How to: Add Tool Locations to the PATH Environment Variable](https://msdn.microsoft.com/en-us/library/office/ee537574(v=office.14).aspx) in order to add `xstream` to their `PATH`.
 
-### Install source (With Go Installed)
+### Install source (with Go installed)
 
 Before you install from source, you need to make sure that Go is installed on your system. You can install Go by following the official instructions for your operating system. For this, we will assume that Go is already installed.
 
@@ -83,7 +81,7 @@ Before you install from source, you need to make sure that Go is installed on yo
 go install -v github.com/hueristiq/xstream/cmd/xstream@latest
 ```
 
-#### `go build ...` the development Version
+#### `go build ...` the development version
 
 * Clone the repository
 
@@ -234,14 +232,10 @@ This tool is distributed under the [MIT license](https://github.com/hueristiq/xs
 
 ## Credits
 
-### Contributors
-
-Thanks to the amazing [contributors](https://github.com/hueristiq/xstream/graphs/contributors):
+Thanks to the amazing [contributors](https://github.com/hueristiq/xstream/graphs/contributors) on this project ❤️.
 
 [![contributors](https://contrib.rocks/image?repo=hueristiq/xstream&max=500)](https://github.com/hueristiq/xstream/graphs/contributors)
 
-### Similar Projects
-
-Thanks to similar open source projects - check them out, may fit in your workflow.
+...do also check out the below similar projects that may fit in your workflow:
 
 [anew](https://github.com/tomnomnom/anew) ◇ tee (coreutils) ◇ sponge (moreutils)
