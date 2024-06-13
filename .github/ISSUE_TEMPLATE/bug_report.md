@@ -1,9 +1,8 @@
 ---
-name: Bug report
+name: Bug Report
 about: Create a report to help us improve
 labels: 'Type: Bug'
 ---
-
 
 <!-- ISSUES MISSING IMPORTANT INFORMATION MAY BE CLOSED WITHOUT INVESTIGATION. -->
 
