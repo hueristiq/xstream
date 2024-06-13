@@ -236,7 +236,7 @@ This tool is distributed under the [MIT license](https://github.com/hueristiq/xs
 
 ### Contributors
 
-Thanks to the amazing [contributors](https://github.com/hueristiq/xstream/graphs/contributors) for keeping this project alive.
+Thanks to the amazing [contributors](https://github.com/hueristiq/xstream/graphs/contributors):
 
 [![contributors](https://contrib.rocks/image?repo=hueristiq/xstream&max=500)](https://github.com/hueristiq/xstream/graphs/contributors)
 
