@@ -9,6 +9,7 @@ import (
 
 	"github.com/hueristiq/hqgolog"
 	"github.com/hueristiq/xstream/internal/configuration"
+	"github.com/hueristiq/xstream/pkg/stdio"
 	"github.com/spf13/pflag"
 )
 
@@ -32,7 +33,7 @@ func init() {
 		fmt.Fprintln(os.Stderr, configuration.BANNER)
 
 		h := "\nUSAGE:\n"
-		h += fmt.Sprintf(" %s [OPTION]... [FILE]\n", configuration.NAME)
+		h += fmt.Sprintf(" %s [OPTION]... <FILE>\n", configuration.NAME)
 
 		h += "\nINPUT OPTIONS:\n"
 		h += "     --soak bool        soak up all input before writing to file\n"
@@ -50,6 +51,13 @@ func init() {
 }
 
 func main() {
+	if !stdio.IsStdinPresent() {
+		fmt.Fprintln(os.Stderr, "[-]", configuration.NAME, "expects input from standard input stream.")
+		fmt.Println("")
+
+		os.Exit(1)
+	}
+
 	destination := pflag.Arg(0)
 
 	var err error
