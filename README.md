@@ -238,4 +238,4 @@ Thanks to the amazing [contributors](https://github.com/hueristiq/xstream/graphs
 
 ...do also check out the below similar projects that may fit in your workflow:
 
-[anew](https://github.com/tomnomnom/anew) ◇ tee (coreutils) ◇ sponge (moreutils)
+[tomnomnom/anew](https://github.com/tomnomnom/anew) ◇ [rwese/anew](https://github.com/rwese/anew) ◇ tee (coreutils) ◇ sponge (moreutils)
