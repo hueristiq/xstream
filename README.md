@@ -2,7 +2,7 @@
 
 ![made with go](https://img.shields.io/badge/made%20with-Go-1E90FF.svg) [![go report card](https://goreportcard.com/badge/github.com/hueristiq/xstream)](https://goreportcard.com/report/github.com/hueristiq/xstream) [![release](https://img.shields.io/github/release/hueristiq/xstream?style=flat&color=1E90FF)](https://github.com/hueristiq/xstream/releases) [![open issues](https://img.shields.io/github/issues-raw/hueristiq/xstream.svg?style=flat&color=1E90FF)](https://github.com/hueristiq/xstream/issues?q=is:issue+is:open) [![closed issues](https://img.shields.io/github/issues-closed-raw/hueristiq/xstream.svg?style=flat&color=1E90FF)](https://github.com/hueristiq/xstream/issues?q=is:issue+is:closed) [![license](https://img.shields.io/badge/license-MIT-gray.svg?color=1E90FF)](https://github.com/hueristiq/xstream/blob/master/LICENSE) ![maintenance](https://img.shields.io/badge/maintained%3F-yes-1E90FF.svg) [![contribution](https://img.shields.io/badge/contributions-welcome-1E90FF.svg)](https://github.com/hueristiq/xstream/blob/master/CONTRIBUTING.md)
 
-`xstream` is a versatile command-line utility handy taking a single stream of input, from standard input, and splitting it into two outputs, standard output and file.
+`xstream` is a versatile command-line utility handy in taking a single stream of input, from standard input, and splitting it into two outputs, standard output and file.
 
 ## Resources
 
