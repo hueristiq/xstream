@@ -6,7 +6,6 @@ import (
 	"io"
 	"os"
 	"path/filepath"
-	"strings"
 
 	"github.com/hueristiq/hqgolog"
 	"github.com/hueristiq/xstream/internal/configuration"
@@ -15,7 +14,6 @@ import (
 
 var (
 	soak           bool
-	trim           bool
 	uniqueOutput   bool
 	appendToOutput bool
 	quiet          bool
@@ -24,7 +22,6 @@ var (
 
 func init() {
 	pflag.BoolVar(&soak, "soak", false, "")
-	pflag.BoolVar(&trim, "trim", false, "")
 	pflag.BoolVarP(&uniqueOutput, "unique", "u", false, "")
 	pflag.BoolVarP(&appendToOutput, "append", "a", false, "")
 	pflag.BoolVarP(&quiet, "quiet", "q", false, "")
@@ -39,9 +36,6 @@ func init() {
 
 		h += "\nINPUT OPTIONS:\n"
 		h += "     --soak bool        soak up all input before writing to file\n"
-
-		h += "\nMANIPULATION:\n"
-		h += "     --trim bool        trim leading and trailing whitespace\n"
 
 		h += "\nOUTPUT OPTIONS:\n"
 		h += " -u, --unique bool      output unique lines\n"
@@ -65,7 +59,7 @@ func main() {
 	uniqueDestinationLinesMap := map[string]bool{}
 
 	if destination != "" && uniqueOutput && appendToOutput {
-		uniqueDestinationLinesMap, err = readFileIntoMap(destination, trim)
+		uniqueDestinationLinesMap, err = readFileIntoMap(destination)
 		if err != nil && !os.IsNotExist(err) {
 			hqgolog.Fatal().Msg(err.Error())
 		}
@@ -94,7 +88,7 @@ func main() {
 func processInputInSoakMode(uniqueDestinationLinesMap map[string]bool, destination string, df io.WriteCloser) (err error) {
 	var inputLinesSlice []string
 
-	inputLinesSlice, err = readStdinIntoSlice(trim)
+	inputLinesSlice, err = readStdinIntoSlice()
 	if err != nil {
 		return
 	}
@@ -126,10 +120,6 @@ func processInputInDefaultMode(uniqueDestinationLinesMap map[string]bool, destin
 	for scanner.Scan() {
 		line := scanner.Text()
 
-		if trim {
-			line = strings.TrimSpace(line)
-		}
-
 		if uniqueOutput {
 			if uniqueDestinationLinesMap[line] {
 				continue
@@ -154,7 +144,7 @@ func processInputInDefaultMode(uniqueDestinationLinesMap map[string]bool, destin
 	return
 }
 
-func readFileIntoMap(file string, trim bool) (lines map[string]bool, err error) {
+func readFileIntoMap(file string) (lines map[string]bool, err error) {
 	lines = map[string]bool{}
 
 	var f *os.File
@@ -170,10 +160,6 @@ func readFileIntoMap(file string, trim bool) (lines map[string]bool, err error) 
 
 	for scanner.Scan() {
 		line := scanner.Text()
-
-		if trim {
-			line = strings.TrimSpace(line)
-		}
 
 		if _, ok := lines[line]; ok {
 			continue
@@ -207,17 +193,13 @@ func getWriteCloser(file string, appendToFile bool) (writer io.WriteCloser, err 
 	return
 }
 
-func readStdinIntoSlice(trim bool) (lines []string, err error) {
+func readStdinIntoSlice() (lines []string, err error) {
 	lines = []string{}
 
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for scanner.Scan() {
 		line := scanner.Text()
-
-		if trim {
-			line = strings.TrimSpace(line)
-		}
 
 		lines = append(lines, line)
 	}
