@@ -13,9 +13,6 @@
 		* [`go install ...`](#go-install)
 		* [`go build ...` the development Version](#go-build--the-development-version)
 * [Usage](#usage)
-	* [Examples](#examples)
-		* [Appending Unique Lines to File](#appending-unique-lines-to-file)
-		* [Deduplicating Files](#deduplicating-files)
 * [Contributing](#contributing)
 * [Licensing](#licensing)
 * [Credits](#credits)
@@ -146,81 +143,79 @@ OUTPUT OPTIONS:
 pflag: help requested
 ```
 
-### Examples
+* Appending Unique Lines to File
 
-#### Appending Unique Lines to File
+	```
+	➜  cat stuff.txt
+	one
+	two
+	three
 
-```
-➜  cat stuff.txt
-one
-two
-three
+	➜  cat new-stuff.txt
+	zero
+	one
+	two
+	three
+	four
+	five
 
-➜  cat new-stuff.txt
-zero
-one
-two
-three
-four
-five
+	➜  cat new-stuff.txt | xstream stuff.txt --append --unique
+	zero
+	four
+	five
 
-➜  cat new-stuff.txt | xstream stuff.txt --append --unique
-zero
-four
-five
+	➜  cat stuff.txt
+	one
+	two
+	three
+	zero
+	four
+	five
 
-➜  cat stuff.txt
-one
-two
-three
-zero
-four
-five
+	```
 
-```
+	Note that the new lines added to `stuff.txt` are also sent to `stdout`, this allows for them to be redirected to another file:
 
-Note that the new lines added to `stuff.txt` are also sent to `stdout`, this allows for them to be redirected to another file:
+	```
+	➜  cat new-stuff.txt | xstream stuff.txt --append --unique > added-lines.txt
+	➜  cat added-lines.txt
+	zero
+	four
+	five
+	```
 
-```
-➜  cat new-stuff.txt | xstream stuff.txt --append --unique > added-lines.txt
-➜  cat added-lines.txt
-zero
-four
-five
-```
+* Deduplicating Files
 
-#### Deduplicating Files
+	```
+	➜  cat stuff.txt
+	zero
+	one
+	two
+	three
+	zero
+	four
+	five
+	five
 
-```
-➜  cat stuff.txt
-zero
-one
-two
-three
-zero
-four
-five
-five
+	➜  cat stuff.txt | xstream stuff.txt --soak --unique
+	zero
+	one
+	two
+	three
+	four
+	five
 
-➜  cat stuff.txt | xstream stuff.txt --soak --unique
-zero
-one
-two
-three
-four
-five
+	➜  cat stuff.txt
+	zero
+	one
+	two
+	three
+	four
+	five
 
-➜  cat stuff.txt
-zero
-one
-two
-three
-four
-five
+	```
 
-```
-
-Note the use of `--soak`, it makes the utility soak up all its input before writing to a file. This is useful for reading from and writing to the same file in a single pipeline.
+	Note the use of `--soak`, it makes the utility soak up all its input before writing to a file. This is useful for reading from and writing to the same file in a single pipeline.
 
 ## Contributing
 
