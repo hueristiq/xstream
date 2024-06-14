@@ -131,9 +131,6 @@ USAGE:
 INPUT OPTIONS:
      --soak bool        soak up all input before writing to file
 
-MANIPULATION:
-     --trim bool        trim leading and trailing whitespace
-
 OUTPUT OPTIONS:
  -u, --unique bool      output unique lines
  -a, --append bool      append lines to output
