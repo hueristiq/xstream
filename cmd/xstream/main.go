@@ -35,15 +35,15 @@ func init() {
 		fmt.Fprintln(os.Stderr, configuration.BANNER)
 
 		h := "\nUSAGE:\n"
-		h += fmt.Sprintf(" %s [OPTIONS]\n", configuration.NAME)
+		h += fmt.Sprintf(" %s [OPTION]... [FILE]\n", configuration.NAME)
 
-		h += "\nINPUT:\n"
+		h += "\nINPUT OPTIONS:\n"
 		h += "     --soak bool        soak up all input before writing to file\n"
 
 		h += "\nMANIPULATION:\n"
 		h += "     --trim bool        trim leading and trailing whitespace\n"
 
-		h += "\nOUTPUT:\n"
+		h += "\nOUTPUT OPTIONS:\n"
 		h += " -u, --unique bool      output unique lines\n"
 		h += " -a, --append bool      append lines to output\n"
 		h += " -q, --quiet bool       suppress output to stdout\n"

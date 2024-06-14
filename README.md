@@ -129,15 +129,15 @@ help message:
                 ...with <3 by Hueristiq (https://github.com/hueristiq)
 
 USAGE:
- xstream [OPTIONS]
+ xstream [OPTION]... [FILE]
 
-INPUT:
+INPUT OPTIONS:
      --soak bool        soak up all input before writing to file
 
 MANIPULATION:
      --trim bool        trim leading and trailing whitespace
 
-OUTPUT:
+OUTPUT OPTIONS:
  -u, --unique bool      output unique lines
  -a, --append bool      append lines to output
  -q, --quiet bool       suppress output to stdout
