@@ -2,7 +2,7 @@
 
 ![made with go](https://img.shields.io/badge/made%20with-Go-1E90FF.svg) [![go report card](https://goreportcard.com/badge/github.com/hueristiq/xstream)](https://goreportcard.com/report/github.com/hueristiq/xstream) [![release](https://img.shields.io/github/release/hueristiq/xstream?style=flat&color=1E90FF)](https://github.com/hueristiq/xstream/releases) [![open issues](https://img.shields.io/github/issues-raw/hueristiq/xstream.svg?style=flat&color=1E90FF)](https://github.com/hueristiq/xstream/issues?q=is:issue+is:open) [![closed issues](https://img.shields.io/github/issues-closed-raw/hueristiq/xstream.svg?style=flat&color=1E90FF)](https://github.com/hueristiq/xstream/issues?q=is:issue+is:closed) [![license](https://img.shields.io/badge/license-MIT-gray.svg?color=1E90FF)](https://github.com/hueristiq/xstream/blob/master/LICENSE) ![maintenance](https://img.shields.io/badge/maintained%3F-yes-1E90FF.svg) [![contribution](https://img.shields.io/badge/contributions-welcome-1E90FF.svg)](https://github.com/hueristiq/xstream/blob/master/CONTRIBUTING.md)
 
-`xstream` is a versatile command-line interface (CLI) utility for handling data streams in Unix-like environments. It serves as a crucial link between standard input and dual outputs, taking a single stream of input and splitting it into two outputs, one to the standard output and the other to a file simultaneously. 
+`xstream` is a versatile command-line utility handy taking a single stream of input, from standard input, and splitting it into two outputs, standard output and file.
 
 ## Resources
 
@@ -22,9 +22,9 @@
 
 ## Features
 
-* Writes incoming `stdin` to both `stdout` and file.
-* Supports reading and writing to the same file.
-* Supports appending and overwriting destination.
+* Splits incoming standard input into standard output and file.
+* Supports soaking up input before writing to output file.
+* Supports appending and overwriting outputs.
 * Supports deduplication.
 * Cross-Platform (Windows, Linux & macOS).
 
@@ -228,11 +228,11 @@ Note the use of `--soak`, it makes the utility soak up all its input before writ
 
 ## Licensing
 
-This tool is distributed under the [MIT license](https://github.com/hueristiq/xstream/blob/master/LICENSE).
+This utility is distributed under the [MIT license](https://github.com/hueristiq/xstream/blob/master/LICENSE).
 
 ## Credits
 
-Thanks to the amazing [contributors](https://github.com/hueristiq/xstream/graphs/contributors) on this project ❤️.
+Many thanks to the amazing [contributors](https://github.com/hueristiq/xstream/graphs/contributors):
 
 [![contributors](https://contrib.rocks/image?repo=hueristiq/xstream&max=500)](https://github.com/hueristiq/xstream/graphs/contributors)
 
