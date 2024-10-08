@@ -1,8 +1,8 @@
-# xstream
+# xtee
 
-![made with go](https://img.shields.io/badge/made%20with-Go-1E90FF.svg) [![go report card](https://goreportcard.com/badge/github.com/hueristiq/xstream)](https://goreportcard.com/report/github.com/hueristiq/xstream) [![release](https://img.shields.io/github/release/hueristiq/xstream?style=flat&color=1E90FF)](https://github.com/hueristiq/xstream/releases) [![open issues](https://img.shields.io/github/issues-raw/hueristiq/xstream.svg?style=flat&color=1E90FF)](https://github.com/hueristiq/xstream/issues?q=is:issue+is:open) [![closed issues](https://img.shields.io/github/issues-closed-raw/hueristiq/xstream.svg?style=flat&color=1E90FF)](https://github.com/hueristiq/xstream/issues?q=is:issue+is:closed) [![license](https://img.shields.io/badge/license-MIT-gray.svg?color=1E90FF)](https://github.com/hueristiq/xstream/blob/master/LICENSE) ![maintenance](https://img.shields.io/badge/maintained%3F-yes-1E90FF.svg) [![contribution](https://img.shields.io/badge/contributions-welcome-1E90FF.svg)](https://github.com/hueristiq/xstream/blob/master/CONTRIBUTING.md)
+![made with go](https://img.shields.io/badge/made%20with-Go-1E90FF.svg) [![go report card](https://goreportcard.com/badge/github.com/hueristiq/xtee)](https://goreportcard.com/report/github.com/hueristiq/xtee) [![release](https://img.shields.io/github/release/hueristiq/xtee?style=flat&color=1E90FF)](https://github.com/hueristiq/xtee/releases) [![open issues](https://img.shields.io/github/issues-raw/hueristiq/xtee.svg?style=flat&color=1E90FF)](https://github.com/hueristiq/xtee/issues?q=is:issue+is:open) [![closed issues](https://img.shields.io/github/issues-closed-raw/hueristiq/xtee.svg?style=flat&color=1E90FF)](https://github.com/hueristiq/xtee/issues?q=is:issue+is:closed) [![license](https://img.shields.io/badge/license-MIT-gray.svg?color=1E90FF)](https://github.com/hueristiq/xtee/blob/master/LICENSE) ![maintenance](https://img.shields.io/badge/maintained%3F-yes-1E90FF.svg) [![contribution](https://img.shields.io/badge/contributions-welcome-1E90FF.svg)](https://github.com/hueristiq/xtee/blob/master/CONTRIBUTING.md)
 
-`xstream` is a versatile command-line utility handy in taking a single stream of input, from standard input, and splitting it into two outputs, standard output and file.
+`xtee` is a versatile command-line utility handy in taking a single stream of input, from standard input, and splitting it into two outputs, standard output and file.
 
 ## Resources
 
@@ -29,44 +29,44 @@
 
 ### Install release binaries (without Go installed)
 
-Visit the [releases page](https://github.com/hueristiq/xstream/releases) and find the appropriate archive for your operating system and architecture. Download the archive from your browser or copy its URL and retrieve it with `wget` or `curl`:
+Visit the [releases page](https://github.com/hueristiq/xtee/releases) and find the appropriate archive for your operating system and architecture. Download the archive from your browser or copy its URL and retrieve it with `wget` or `curl`:
 
 * ...with `wget`:
 
 	```bash
-	wget https://github.com/hueristiq/xstream/releases/download/v<version>/xstream-<version>-linux-amd64.tar.gz
+	wget https://github.com/hueristiq/xtee/releases/download/v<version>/xtee-<version>-linux-amd64.tar.gz
 	```
 
 * ...or, with `curl`:
 
 	```bash
-	curl -OL https://github.com/hueristiq/xstream/releases/download/v<version>/xstream-<version>-linux-amd64.tar.gz
+	curl -OL https://github.com/hueristiq/xtee/releases/download/v<version>/xtee-<version>-linux-amd64.tar.gz
 	```
 
 ...then, extract the binary:
 
 ```bash
-tar xf xstream-<version>-linux-amd64.tar.gz
+tar xf xtee-<version>-linux-amd64.tar.gz
 ```
 
 > [!TIP]
 > The above steps, download and extract, can be combined into a single step with this onliner
 > 
 > ```bash
-> curl -sL https://github.com/hueristiq/xstream/releases/download/v<version>/xstream-<version>-linux-amd64.tar.gz | tar -xzv
+> curl -sL https://github.com/hueristiq/xtee/releases/download/v<version>/xtee-<version>-linux-amd64.tar.gz | tar -xzv
 > ```
 
 > [!NOTE]
-> On Windows systems, you should be able to double-click the zip archive to extract the `xstream` executable.
+> On Windows systems, you should be able to double-click the zip archive to extract the `xtee` executable.
 
-...move the `xstream` binary to somewhere in your `PATH`. For example, on GNU/Linux and OS X systems:
+...move the `xtee` binary to somewhere in your `PATH`. For example, on GNU/Linux and OS X systems:
 
 ```bash
-sudo mv xstream /usr/local/bin/
+sudo mv xtee /usr/local/bin/
 ```
 
 > [!NOTE]
-> Windows users can follow [How to: Add Tool Locations to the PATH Environment Variable](https://msdn.microsoft.com/en-us/library/office/ee537574(v=office.14).aspx) in order to add `xstream` to their `PATH`.
+> Windows users can follow [How to: Add Tool Locations to the PATH Environment Variable](https://msdn.microsoft.com/en-us/library/office/ee537574(v=office.14).aspx) in order to add `xtee` to their `PATH`.
 
 ### Install source (with Go installed)
 
@@ -75,7 +75,7 @@ Before you install from source, you need to make sure that Go is installed on yo
 #### `go install ...`
 
 ```bash
-go install -v github.com/hueristiq/xstream/cmd/xstream@latest
+go install -v github.com/hueristiq/xtee/cmd/xtee@latest
 ```
 
 #### `go build ...` the development version
@@ -83,50 +83,49 @@ go install -v github.com/hueristiq/xstream/cmd/xstream@latest
 * Clone the repository
 
 	```bash
-	git clone https://github.com/hueristiq/xstream.git 
+	git clone https://github.com/hueristiq/xtee.git 
 	```
 
 * Build the utility
 
 	```bash
-	cd xstream/cmd/xstream && \
+	cd xtee/cmd/xtee && \
 	go build .
 	```
 
-* Move the `xstream` binary to somewhere in your `PATH`. For example, on GNU/Linux and OS X systems:
+* Move the `xtee` binary to somewhere in your `PATH`. For example, on GNU/Linux and OS X systems:
 
 	```bash
-	sudo mv xstream /usr/local/bin/
+	sudo mv xtee /usr/local/bin/
 	```
 
-	Windows users can follow [How to: Add Tool Locations to the PATH Environment Variable](https://msdn.microsoft.com/en-us/library/office/ee537574(v=office.14).aspx) in order to add `xstream` to their `PATH`.
+	Windows users can follow [How to: Add Tool Locations to the PATH Environment Variable](https://msdn.microsoft.com/en-us/library/office/ee537574(v=office.14).aspx) in order to add `xtee` to their `PATH`.
 
 
 > [!CAUTION]
-> While the development version is a good way to take a peek at `xstream`'s latest features before they get released, be aware that it may have bugs. Officially released versions will generally be more stable.
+> While the development version is a good way to take a peek at `xtee`'s latest features before they get released, be aware that it may have bugs. Officially released versions will generally be more stable.
 
 ## Usage
 
-To display help message for `xstream` use the `-h` flag:
+To display help message for `xtee` use the `-h` flag:
 
 ```bash
-xstream -h
+xtee -h
 ```
 
 help message:
 
 ```text
 
-                      _
-            __  _____| |_ _ __ ___  __ _ _ __ ___
-            \ \/ / __| __| '__/ _ \/ _` | '_ ` _ \
-             >  <\__ \ |_| | |  __/ (_| | | | | | |
-            /_/\_\___/\__|_|  \___|\__,_|_| |_| |_| v0.3.0
-
-                ...with <3 by Hueristiq (https://github.com/hueristiq)
+      _
+__  _| |_ ___  ___
+\ \/ / __/ _ \/ _ \
+ >  <| ||  __/  __/
+/_/\_\\__\___|\___|
+             v0.3.0
 
 USAGE:
- xstream [OPTION]... [FILE]
+ xtee [OPTION]... <FILE>
 
 INPUT OPTIONS:
      --soak bool        soak up all input before writing to file
@@ -156,7 +155,7 @@ pflag: help requested
 	four
 	five
 
-	➜  cat new-stuff.txt | xstream stuff.txt --append --unique
+	➜  cat new-stuff.txt | xtee stuff.txt --append --unique
 	zero
 	four
 	five
@@ -174,7 +173,7 @@ pflag: help requested
 	Note that the new lines added to `stuff.txt` are also sent to `stdout`, this allows for them to be redirected to another file:
 
 	```
-	➜  cat new-stuff.txt | xstream stuff.txt --append --unique > added-lines.txt
+	➜  cat new-stuff.txt | xtee stuff.txt --append --unique > added-lines.txt
 	➜  cat added-lines.txt
 	zero
 	four
@@ -194,7 +193,7 @@ pflag: help requested
 	five
 	five
 
-	➜  cat stuff.txt | xstream stuff.txt --soak --unique
+	➜  cat stuff.txt | xtee stuff.txt --soak --unique
 	zero
 	one
 	two
@@ -216,17 +215,17 @@ pflag: help requested
 
 ## Contributing
 
-[Issues](https://github.com/hueristiq/xstream/issues) and [Pull Requests](https://github.com/hueristiq/xstream/pulls) are welcome! **Check out the [contribution guidelines.](https://github.com/hueristiq/xstream/blob/master/CONTRIBUTING.md)**
+[Issues](https://github.com/hueristiq/xtee/issues) and [Pull Requests](https://github.com/hueristiq/xtee/pulls) are welcome! **Check out the [contribution guidelines.](https://github.com/hueristiq/xtee/blob/master/CONTRIBUTING.md)**
 
 ## Licensing
 
-This utility is distributed under the [MIT license](https://github.com/hueristiq/xstream/blob/master/LICENSE).
+This utility is distributed under the [MIT license](https://github.com/hueristiq/xtee/blob/master/LICENSE).
 
 ## Credits
 
-Many thanks to the amazing [contributors](https://github.com/hueristiq/xstream/graphs/contributors):
+Many thanks to the amazing [contributors](https://github.com/hueristiq/xtee/graphs/contributors):
 
-[![contributors](https://contrib.rocks/image?repo=hueristiq/xstream&max=500)](https://github.com/hueristiq/xstream/graphs/contributors)
+[![contributors](https://contrib.rocks/image?repo=hueristiq/xtee&max=500)](https://github.com/hueristiq/xtee/graphs/contributors)
 
 ...do also check out the below similar projects that may fit in your workflow:
 

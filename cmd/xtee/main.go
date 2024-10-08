@@ -8,8 +8,8 @@ import (
 	"path/filepath"
 
 	"github.com/hueristiq/hqgolog"
-	"github.com/hueristiq/xstream/internal/configuration"
-	"github.com/hueristiq/xstream/pkg/stdio"
+	"github.com/hueristiq/xtee/internal/configuration"
+	"github.com/hueristiq/xtee/pkg/stdio"
 	"github.com/spf13/pflag"
 )
 
