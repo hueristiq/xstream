@@ -51,7 +51,7 @@ func init() {
 }
 
 func main() {
-	if !stdio.IsStdinPresent() {
+	if !stdio.HasStdIn() {
 		fmt.Fprintln(os.Stderr, "[-]", configuration.NAME, "expects input from standard input stream.")
 		fmt.Println("")
 

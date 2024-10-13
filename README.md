@@ -16,6 +16,8 @@
 * [Contributing](#contributing)
 * [Licensing](#licensing)
 * [Credits](#credits)
+    * [Contributors](#contributors)
+    * [Similar Projects](#similar-projects)
 
 ## Features
 
@@ -215,18 +217,22 @@ pflag: help requested
 
 ## Contributing
 
-[Issues](https://github.com/hueristiq/xtee/issues) and [Pull Requests](https://github.com/hueristiq/xtee/pulls) are welcome! **Check out the [contribution guidelines.](https://github.com/hueristiq/xtee/blob/master/CONTRIBUTING.md)**
+We welcome contributions! Feel free to submit [Pull Requests](https://github.com/hueristiq/xtee/pulls) or report [Issues](https://github.com/hueristiq/xtee/issues). For more details, check out the [contribution guidelines](https://github.com/hueristiq/xtee/blob/master/CONTRIBUTING.md).
 
 ## Licensing
 
-This utility is distributed under the [MIT license](https://github.com/hueristiq/xtee/blob/master/LICENSE).
+This utility is licensed under the [MIT license](https://opensource.org/license/mit). You are free to use, modify, and distribute it, as long as you follow the terms of the license. You can find the full license text in the repository - [Full MIT license text](https://github.com/hueristiq/xtee/blob/master/LICENSE).
 
 ## Credits
 
-Many thanks to the amazing [contributors](https://github.com/hueristiq/xtee/graphs/contributors):
+### Contributors
+
+A huge thanks to all the contributors who have helped make `xtee` what it is today!
 
 [![contributors](https://contrib.rocks/image?repo=hueristiq/xtee&max=500)](https://github.com/hueristiq/xtee/graphs/contributors)
 
-...do also check out the below similar projects that may fit in your workflow:
+### Similar Projects
+
+If you're interested in more utilities like this, check out:
 
 [tomnomnom/anew](https://github.com/tomnomnom/anew) ◇ [rwese/anew](https://github.com/rwese/anew) ◇ tee (coreutils) ◇ sponge (moreutils)

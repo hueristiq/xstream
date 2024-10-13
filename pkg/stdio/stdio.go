@@ -4,10 +4,10 @@ import (
 	"os"
 )
 
-func IsStdinPresent() (present bool) {
+func HasStdIn() (hasStdIn bool) {
 	stat, err := os.Stdin.Stat()
 	if err != nil {
-		present = false
+		hasStdIn = false
 
 		return
 	}
@@ -15,7 +15,7 @@ func IsStdinPresent() (present bool) {
 	isPipedFromChrDev := (stat.Mode() & os.ModeCharDevice) == 0
 	isPipedFromFIFO := (stat.Mode() & os.ModeNamedPipe) != 0
 
-	present = isPipedFromChrDev || isPipedFromFIFO
+	hasStdIn = isPipedFromChrDev || isPipedFromFIFO
 
 	return
 }
